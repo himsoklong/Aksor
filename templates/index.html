@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khmer OCR Demo</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Khmer OCR Demo</h1>
+            <p>Text recognition for Khmer language using TrOCR and Tesseract</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-prompt">
+                        <img src="/static/images/upload-icon.svg" alt="Upload" class="upload-icon">
+                        <p>Drag and drop an image file here or click to browse</p>
+                        <p class="small">Supported formats: JPG, PNG, TIFF, BMP</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                
+                <div class="engine-selection">
+                    <p>Select OCR Engine:</p>
+                    <div class="engine-options">
+                        <label class="engine-option">
+                            <input type="radio" name="ocrEngine" value="trocr" checked>
+                            <span class="engine-name">TrOCR</span>
+                            <span class="engine-description">Transformer-based OCR (default)</span>
+                        </label>
+                        <label class="engine-option" id="tesseractOption">
+                            <input type="radio" name="ocrEngine" value="tesseract">
+                            <span class="engine-name">Tesseract</span>
+                            <span class="engine-description">Open-source Tesseract OCR with Khmer support</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="processButton" class="primary-button" disabled>Process Image</button>
+            </section>
+
+            <section class="preview-section">
+                <div class="panel">
+                    <h2>Image Preview</h2>
+                    <div class="image-preview" id="imagePreview">
+                        <p>No image selected</p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <h2>Recognized Text</h2>
+                    <div class="text-result" id="textResult">
+                        <p>Recognized text will appear here</p>
+                    </div>
+                    <div class="controls">
+                        <button id="copyButton" class="secondary-button" disabled>Copy Text</button>
+                        <button id="downloadButton" class="secondary-button" disabled>Download Text</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h2>About This Demo</h2>
+                <p>This demo allows you to use two different OCR engines for Khmer text recognition:</p>
+                <ul>
+                    <li><strong>TrOCR</strong> - Transformer-based Optical Character Recognition model that works well with Khmer text.</li>
+                    <li><strong>Tesseract</strong> - Open-source OCR engine with Khmer language support.</li>
+                </ul>
+                <p>For best results:</p>
+                <ul>
+                    <li>Use clear images with good lighting</li>
+                    <li>Ensure text is well-focused and not blurry</li>
+                    <li>Avoid excessive image noise or background patterns</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Khmer OCR Demo using TrOCR, Tesseract, and FastAPI</p>
+        </footer>
+    </div>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>Processing image...</p>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
